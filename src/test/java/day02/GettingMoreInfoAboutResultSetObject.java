@@ -10,7 +10,7 @@ public class GettingMoreInfoAboutResultSetObject {
 
         Connection conn = DriverManager.getConnection(connectionStr,username,password) ;
         Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs   =   stmt.executeQuery("SELECT * FROM JOBS") ;
+        ResultSet rs   =   stmt.executeQuery("SELECT * FROM employees") ;
 
         //Metadata-- data about the data --
         //ResultSetMetaData -- data about the ResultSet object that contain our resulting rows and columns
@@ -22,6 +22,7 @@ public class GettingMoreInfoAboutResultSetObject {
 
         int colCount = rsmd.getColumnCount();
         System.out.println("colCount = " + colCount);
+        System.out.println("===============================================");
 
         //this is how we get column label I name using index
         //get first column name
@@ -33,7 +34,10 @@ public class GettingMoreInfoAboutResultSetObject {
         for (int i = 1; i<=colCount;i++){
             System.out.println(i +". Column Name is "+rsmd.getColumnLabel(i));
         }
+        System.out.println("===============================================");
 
-
+        rs.close();
+        stmt.close();
+        conn.close();
     }
 }

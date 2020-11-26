@@ -1,19 +1,15 @@
 package day02;
 
+import utility.DB_Utility;
+
 import java.sql.*;
 
 public class Review {
     public static void main(String[] args) throws SQLException {
 
-        String connectionStr = "jdbc:oracle:thin:@52.91.70.165:1521:XE";
-        String username = "hr" ;
-        String password = "hr" ;
+        DB_Utility.createConnection();
 
-        Connection conn = DriverManager.getConnection(connectionStr,username,password) ;
-
-        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-
-        ResultSet rs   =   stmt.executeQuery("SELECT * FROM JOBS") ;
+        ResultSet rs   =   DB_Utility.runQuery("SELECT * FROM JOBS") ;
 
         // I want to read the first tow
         rs.next();
@@ -57,9 +53,7 @@ public class Review {
 
         //clean up the connection, statement and resultset object after usage
 
-        rs.close();
-        stmt.close();
-        conn.close();
+       DB_Utility.destroy();
 
 
     }
