@@ -145,10 +145,23 @@ public class DB_Utility {
 
     }
 
-
-
-
-
+    /**
+     * Create a method to return the cell value at certain row certain column
+     * @param rowNum
+     * @parem colNum
+     * @return Cell value as String
+     */
+    public static String getColumnDataAtRow(int rowNum, int colNum){
+        String result = "" ;
+        try {
+            rs.absolute(rowNum) ;
+            result = rs.getString(colNum ) ;
+            rs.beforeFirst();
+        } catch (SQLException e) {
+            System.out.println("ERROR WHILE GETTING CELL VALUE AT ROWNUM COLNUM " + e.getMessage() );
+        }
+        return result ;
+    }
 
 
 }
