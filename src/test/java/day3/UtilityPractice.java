@@ -20,6 +20,11 @@ public class UtilityPractice {
         int rowCount = jobRS.getRow(); //getRow is getting the current row number
         System.out.println("Row count = "+rowCount);
 
+        int colCount = DB_Utility.getColumnCount();
+        System.out.println("colCount = " + colCount);
+
+        System.out.println("All Column names "+DB_Utility.getColumnNames());
+
 
         DB_Utility.destroy();
 
