@@ -25,6 +25,7 @@ public class UtilityPractice {
 
         System.out.println("All Column names "+DB_Utility.getColumnNames());
 
+        System.out.println("Row data at row 3 "+DB_Utility.getRowDataAsList(3));
 
         DB_Utility.destroy();
 
