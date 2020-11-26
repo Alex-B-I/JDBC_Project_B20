@@ -35,6 +35,8 @@ public class UtilityPractice {
 
         System.out.println("3rd column value: "+DB_Utility.getColumnDataAsList(3));
 
+        System.out.println("Job_title column value: "+DB_Utility.getColumnDataAsList("Job_title"));
+
 
         DB_Utility.destroy();
 

@@ -209,7 +209,29 @@ public class DB_Utility {
 
     }
 
+    /**
+     * return value of all cells in that using column name
+     *
+     * @param colNum the column name you want to get the list out of
+     * @return value of all cells in that column as a List<String>
+     */
+    public static List<String> getColumnDataAsList(String colNum) {
 
+        List<String> cellValuesList = new ArrayList<>();
+
+        try {
+
+            while (rs.next()) {
+                String cellValue = rs.getString(colNum);
+                cellValuesList.add( cellValue ) ;
+            }
+            rs.beforeFirst();
+        } catch (SQLException e) {
+            System.out.println("ERROR WHILE GETTING ONE COLUMN DATA AS LIST " + e.getMessage() );
+        }
+        return cellValuesList ;
+
+    }
 
 
 
