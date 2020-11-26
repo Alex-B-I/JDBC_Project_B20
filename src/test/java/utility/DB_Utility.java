@@ -291,6 +291,18 @@ public class DB_Utility {
 
     }
 
+    public static List<Map<String,String> > getAllDataAsListOfMap(){
+
+        List<Map<String,String> > rowMapList = new ArrayList<>();
+
+        for (int rowNum = 1; rowNum <= getRowCount() ; rowNum++) {
+
+            rowMapList.add(   getRowMap(rowNum)    ) ;
+
+        }
+        return  rowMapList ;
+    }
+
 
 
 
