@@ -3,14 +3,11 @@ package utility;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Properties;
 
 
     public class ConfigurationReader {
-      /*
+
         private static Properties properties;
         static {
             try (FileInputStream fileInputStream = new FileInputStream("configuration.properties")) {
@@ -25,7 +22,7 @@ import java.util.Properties;
             return properties.getProperty(key);
         }
 
-       */
+
 
 
     }
