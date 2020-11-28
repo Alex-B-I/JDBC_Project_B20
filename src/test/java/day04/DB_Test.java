@@ -1,40 +1,48 @@
 package day04;
 
 import org.junit.jupiter.api.*;
+import utility.DB_Utility;
 
 public class DB_Test {
-    // what can we use if we want to run certain code before all test only once
-    // @BeforeAll
+
+    // create connection once and destroy it once
+
     @BeforeAll
-    public static void setUp(){
-        System.out.println("@BeforeAll IS RUNNING");
+    public static void init(){
+        DB_Utility.createConnection();
     }
-    // what can we use if we want to run certain code before each test
-    // @BeforeEach
-    @BeforeEach
-    public void beforeEachMethod(){
-        System.out.println("@BeforeEach IS RUNNING");
+
+    @Test
+    public void testEmployeeCount(){
+
+        // run a query SELECT * FROM EMPLOYEES
+        // assert that the employees count is 107
+        DB_Utility.runQuery("SELECT * FROM EMPLOYEES");
+        Assertions.assertEquals(107,DB_Utility.getRowCount());
     }
-    // what can we use if we want to run certain code after all test only once
-    // @AfterAll
+
+    //Open another test
+    //run query : SELECT * FROM REGIONS
+    //assert -- 3rd row second column is Asia
+
+    @Test
+    public void test3rdRowSecondColumn(){
+        DB_Utility.runQuery("SELECT * FROM REGIONS");
+        Assertions.assertEquals("Asia",DB_Utility.getColumnDataAtRow(3,2));
+
+    }
+
+
+
+
+
+
+
     @AfterAll
     public static void tearDown(){
-        System.out.println("@BeforeAll IS RUNNING");
+        DB_Utility.destroy();
     }
-    // what can we use if we want to run certain code after each test
-    // @AfterEach
-    @AfterEach
-    public void AfterEachMethod(){
-        System.out.println("@AfterEach IS RUNNING");
-    }
-    @Test
-    public void test1(){
-        System.out.println("Test1 is running");
-        Assertions.assertEquals(9, 3+6);
-    }
-    @Test
-    public void test2(){
-        System.out.println("Test2 is running");
-        Assertions.assertEquals(9, 3+6);
-    }
+
+
+
 }
