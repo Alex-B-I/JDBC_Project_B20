@@ -1,6 +1,7 @@
 package day04;
 
 
+import utility.ConfigurationReader;
 import utility.DB_Utility;
 
 public class SpartanDB_Practice {
@@ -8,9 +9,14 @@ public class SpartanDB_Practice {
     // create a main method
     public static void main(String[] args) {
 
-        String connectionStr = "jdbc:oracle:thin:@52.91.70.165:1521:XE" ;
-        String username = "SP";
-        String password = "SP";
+       // String connectionStr = "jdbc:oracle:thin:@52.91.70.165:1521:XE" ;
+       // String username = "SP";
+       // String password = "SP";
+
+        String connectionStr =  ConfigurationReader.getProperty("spartan.database.url");
+        String username =       ConfigurationReader.getProperty("spartan.database.username");
+        String password =       ConfigurationReader.getProperty("spartan.database.password");
+
         // call your create connection method with 3 params
         // provide same connection string as HR
         // provide username and password as SP SP
