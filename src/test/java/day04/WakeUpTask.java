@@ -26,6 +26,9 @@ public class WakeUpTask {
         System.out.println("DB_Utility.getRowDataAsList(3) = " + DB_Utility.getRowDataAsList(3));
         System.out.println("DB_Utility.getAllDataAsListOfMap() = " + DB_Utility.getAllDataAsListOfMap());
 
+        DB_Utility.runQuery("SELECT * FROM COUNTRIES");
+        DB_Utility.displayAllData();
+
 
         DB_Utility.destroy();
 
